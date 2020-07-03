@@ -39,7 +39,7 @@ public interface RangeUtil {
                 System.arraycopy(v, from, res, 0, to - from);
             }
         } catch (Exception ex) {
-            System.out.println("debug");
+            throw new RuntimeException(ex);
         }
 
         return res;
