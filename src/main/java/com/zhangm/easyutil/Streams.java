@@ -1,6 +1,7 @@
 package com.zhangm.easyutil;
 
 import java.util.Iterator;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
@@ -36,5 +37,15 @@ public interface Streams {
                 break;
             }
         }
+    }
+
+    static <T, R> Stream<R> mapWithIndex(Stream<T> stream, Function<T, Long, R> function) {
+        int[] count = new int[1];
+        count[0] = 0;
+        return stream.map(item -> {
+            R res = function.apply(item, (long) count[0]);
+            count[0] += 1;
+            return res;
+        });
     }
 }
