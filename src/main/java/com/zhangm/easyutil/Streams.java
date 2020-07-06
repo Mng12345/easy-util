@@ -1,7 +1,9 @@
 package com.zhangm.easyutil;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -26,6 +28,18 @@ public interface Streams {
         });
     }
 
+    /**
+     * used just for heavy work, and the stream must be small to avoid OOM
+     * @param stream
+     * @param consumer
+     * @param <T>
+     */
+    static <T> void forEachIndexedParallel(Stream<T> stream, Consumer<T, Long> consumer) {
+        List<Tuple<T, Long>> elementWithIndex = mapWithIndex(stream,
+                (item, index) -> new Tuple<T, Long>(item, index)).collect(Collectors.toList());
+        elementWithIndex.parallelStream().forEach(item -> consumer.accept(item.getV1(), item.getV2()));
+    }
+
     static <T> void forEachIndexedWithBreak(Stream<T> stream, Function<T, Long, Boolean> function) {
         Iterator<T> iter = stream.iterator();
         int count = 0;
@@ -47,5 +61,19 @@ public interface Streams {
             count[0] += 1;
             return res;
         });
+    }
+
+    /**
+     * used just for heavy work, and the stream must be small to avoid OOM
+     * @param stream
+     * @param function
+     * @param <T>
+     * @param <R>
+     * @return
+     */
+    static <T, R> Stream<R> mapWithIndexParallel(Stream<T> stream, Function<T, Long, R> function) {
+        List<Tuple<T, Long>> elementWithIndex = mapWithIndex(stream,
+                (item, index) -> new Tuple<T, Long>(item, index)).collect(Collectors.toList());
+        return elementWithIndex.parallelStream().map(item -> function.apply(item.getV1(), item.getV2()));
     }
 }
