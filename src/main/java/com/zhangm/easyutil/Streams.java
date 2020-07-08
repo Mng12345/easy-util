@@ -2,7 +2,9 @@ package com.zhangm.easyutil;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -75,5 +77,9 @@ public interface Streams {
         List<Tuple<T, Long>> elementWithIndex = mapWithIndex(stream,
                 (item, index) -> new Tuple<T, Long>(item, index)).collect(Collectors.toList());
         return elementWithIndex.parallelStream().map(item -> function.apply(item.getV1(), item.getV2()));
+    }
+
+    static <T> Optional<T> find(Stream<T> stream, Predicate<T> function) {
+        return stream.filter(function).findFirst();
     }
 }
