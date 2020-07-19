@@ -7,3 +7,4 @@ com\zhangm\easyutil\Streams$Consumer.class
 com\zhangm\easyutil\BeanConverter.class
 com\zhangm\easyutil\GenericUtil.class
 com\zhangm\easyutil\Tuple.class
+com\zhangm\easyutil\Strings.class
