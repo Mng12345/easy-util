@@ -227,6 +227,22 @@ public interface RangeUtil {
         }
     }
 
+    static double[] add(double[] data, Number num) {
+        double[] newData = new double[data.length];
+        for (int i=0; i<newData.length; i++) {
+            newData[i] += (double)num;
+        }
+        return newData;
+    }
+
+    static int[] add(int[] data, Number num) {
+        int[] newData = new int[data.length];
+        for (int i=0; i<newData.length; i++) {
+            newData[i] += (int)num;
+        }
+        return newData;
+    }
+
     static double[] toDoubleArray(int[] v) {
         double[] res = new double[v.length];
         for (int i=0; i<v.length; i++) {

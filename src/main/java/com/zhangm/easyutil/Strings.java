@@ -1,5 +1,8 @@
 package com.zhangm.easyutil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.slf4j.helpers.MessageFormatter.arrayFormat;
 
 /**
@@ -18,4 +21,7 @@ public interface Strings {
         return arrayFormat(pattern, args).getMessage();
     }
 
+    static void b() {
+        List<Object> l = new ArrayList<>();
+    }
 }
