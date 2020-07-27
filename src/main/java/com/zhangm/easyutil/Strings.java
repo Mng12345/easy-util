@@ -12,7 +12,7 @@ import static org.slf4j.helpers.MessageFormatter.arrayFormat;
 public interface Strings {
 
     /**
-     * api lick log.info("abc {}", "def") = "abc def"
+     * api like log.info("abc {}", "def") = "abc def"
      * @param pattern
      * @param args
      * @return

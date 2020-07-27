@@ -31,4 +31,18 @@ public interface MathUtil {
         return Math.sqrt(variance(array));
     }
 
+    /**
+     * 化简
+     * @param v
+     * @param num 精度
+     * @return
+     */
+    static double round(double v, int num) {
+        if (num == 0) {
+            return Math.round(v);
+        }
+        double multiple = Math.pow(10, num);
+        return Math.round(v * Math.pow(10, num)) / multiple;
+    }
+
 }
