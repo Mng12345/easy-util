@@ -243,6 +243,22 @@ public interface RangeUtil {
         return newData;
     }
 
+    static int sum(int[] data) {
+        int sum = 0;
+        for (int item : data) {
+            sum += item;
+        }
+        return sum;
+    }
+
+    static double sum(double[] data) {
+        double sum = 0.;
+        for (double item : data) {
+            sum += item;
+        }
+        return sum;
+    }
+
     static double[] toDoubleArray(int[] v) {
         double[] res = new double[v.length];
         for (int i=0; i<v.length; i++) {
@@ -360,5 +376,47 @@ public interface RangeUtil {
             }
         }
         return new ArrayList<>(sets);
+    }
+
+    /**
+     * 找到i之前（包含i本身）的n个元素
+     * @param data
+     * @param i
+     * @param n
+     * @return
+     */
+    static double[] sliceNBefore(double[] data, int i, int n) {
+        return slice(data, i - n + 1, i + 1);
+    }
+
+    /**
+     * 找到i之后（包含i本身）的n个元素
+     * @param data
+     * @param i
+     * @param n
+     * @return
+     */
+    static double[] sliceNAfter(double[] data, int i, int n) {
+        return slice(data, i, i + n);
+    }
+
+    static int[] sliceNBefore(int[] data, int i, int n) {
+        int[] res = new int[n];
+        System.arraycopy(data, i - n + 1, res, 0, n);
+        return res;
+    }
+
+    static int[] sliceNAfter(int[] data, int i, int n) {
+        int[] res = new int[n];
+        System.arraycopy(data, i - n + 1, res, 0, n);
+        return res;
+    }
+
+    static List<Integer> toBoxedList(int[] array) {
+        return Arrays.stream(array).boxed().collect(Collectors.toList());
+    }
+
+    static List<Double> toBoxedList(double[] array) {
+        return Arrays.stream(array).boxed().collect(Collectors.toList());
     }
 }
