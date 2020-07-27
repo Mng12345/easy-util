@@ -1,5 +1,2 @@
 /target/
-!/hs_err_pid3608.log
-/target/
-!/hs_err_pid16624.log
-/target/
+*.log
