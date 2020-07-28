@@ -45,15 +45,10 @@ public interface BeanConverter {
     static <T1, T2 extends T1> void transfer(T1 father, Class<T1> fatherClazz, T2 son, Class<? extends T2> sonClazz) {
         try {
             Field[] fatherFields = fatherClazz.getDeclaredFields();
-            Map<String, Field> sonFieldMap = new HashMap<>();
-            Field[] sonFields = sonClazz.getDeclaredFields();
-            for (Field field : sonFields) {
-                sonFieldMap.put(field.getName(), field);
-            }
             for (Field field : fatherFields) {
                 field.setAccessible(true);
                 Object value = field.get(father);
-                Field sonField = sonFieldMap.get(field.getName());
+                Field sonField = sonClazz.getDeclaredField(field.getName());
                 if (sonField != null) {
                     sonField.setAccessible(true);
                     sonField.set(son, value);
