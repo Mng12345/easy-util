@@ -15,7 +15,7 @@ public interface DateUtil {
 
     static Date add(Date date, int unit, int count) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
+        calendar.setTime(date);
         calendar.add(unit, count);
         return calendar.getTime();
     }

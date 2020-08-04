@@ -32,31 +32,4 @@ public interface BeanConverter {
             throw new RuntimeException(ex.getMessage());
         }
     }
-
-    /**
-     * 将父类的属性赋值给子类
-     * @param father
-     * @param fatherClazz
-     * @param son
-     * @param sonClazz
-     * @param <T1>
-     * @param <T2>
-     */
-    static <T1, T2 extends T1> void transfer(T1 father, Class<T1> fatherClazz, T2 son, Class<? extends T2> sonClazz) {
-        try {
-            Field[] fatherFields = fatherClazz.getDeclaredFields();
-            for (Field field : fatherFields) {
-                field.setAccessible(true);
-                Object value = field.get(father);
-                Field sonField = sonClazz.getDeclaredField(field.getName());
-                if (sonField != null) {
-                    sonField.setAccessible(true);
-                    sonField.set(son, value);
-                }
-            }
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-
-    }
 }
