@@ -5,7 +5,7 @@ some easy util class to operate data in java
 
 ## BeanConverter
 
-### static \<T> T convert(Map<String, ?> map, Class<T> tClass)
+### static \<T> T convert(Map<String, ?> map, Class\<T> tClass)
 
 ## DateUtil
 
@@ -18,7 +18,7 @@ some easy util class to operate data in java
 
 ## GenericUtil
 
-### static \<T> T[] getArray(Class<T> componentType, int length)
+### static \<T> T[] getArray(Class\<T> componentType, int length)
 
 ## MathUtil
 
@@ -30,7 +30,7 @@ some easy util class to operate data in java
 
 ## ProxyUtil
 
-### public static  \<T, TAspect> Class<? extends T> proxyClass(Class<T> clazz, Class<TAspect> aspectClass)
+### public static  \<T, TAspect> Class<? extends T> proxyClass(Class\<T> clazz, Class\<TAspect> aspectClass)
 
 ## RandomUtil
 
@@ -63,9 +63,9 @@ some easy util class to operate data in java
 ### static \<T> T[] randomNotRepeat(T[] v, int num, T[] res, int[] index)
 ### static int random(int low, int high)
 ### static \<T> T[] reindex(T[] v, int[] index, T[] out)
-### static \<T> List<T> merge(List<T> l1, List<T> l2)
-### static \<T> List<T> random(List<T> l, int length)
-### static \<T> List<T> randomNotRepeat(List<T> l, int length, int[] indexes)
+### static \<T> List\<T> merge(List\<T> l1, List\<T> l2)
+### static \<T> List\<T> random(List\<T> l, int length)
+### static \<T> List\<T> randomNotRepeat(List\<T> l, int length, int[] indexes)
 ### static double[] sliceNBefore(double[] data, int i, int n)
 ### static double[] sliceNAfter(double[] data, int i, int n)
 ### static int[] sliceNBefore(int[] data, int i, int n)
@@ -84,8 +84,8 @@ some easy util class to operate data in java
 ### static \<T> void forEachIndexed(Stream\<T> stream, Consumer<T, Long> consumer)
 ### static \<T> void forEachIndexedParallel(Stream\<T> stream, Consumer<T, Long> consumer)
 ### static \<T> void forEachIndexedWithBreak(Stream\<T> stream, Function<T, Long, Boolean> function)
-### static \<T, R> Stream<R> mapWithIndex(Stream\<T> stream, Function<T, Long, R> function)
-### static \<T, R> Stream<R> mapWithIndexParallel(Stream\<T> stream, Function<T, Long, R> function)
-### static \<T> Optional<T> find(Stream\<T> stream, Predicate<T> function)
+### static \<T, R> Stream\<R> mapWithIndex(Stream\<T> stream, Function<T, Long, R> function)
+### static \<T, R> Stream\<R> mapWithIndexParallel(Stream\<T> stream, Function<T, Long, R> function)
+### static \<T> Optional\<T> find(Stream\<T> stream, Predicate\<T> function)
 
 ## Tuple, Triple
