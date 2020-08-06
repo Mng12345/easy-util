@@ -6,7 +6,7 @@ package com.zhangm.easyutil;
  */
 public class Functions {
 
-    static interface VoidFuncNoArg {
+    interface VoidFuncNoArg {
         void apply();
     }
 }
