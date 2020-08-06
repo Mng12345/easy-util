@@ -75,7 +75,7 @@ some easy util class to operate data in java
 
 ## Retry
 
-### public static boolean run(Supplier<Boolean> func, Integer times, Consumer<Exception> errCallback)
+### public static boolean run(Supplier<Boolean> func, Integer times, Consumer\<Exception> errCallback)
 
 ## Streams
 
