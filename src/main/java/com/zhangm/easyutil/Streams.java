@@ -3,7 +3,6 @@ package com.zhangm.easyutil;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,8 +17,24 @@ public interface Streams {
         R apply(T1 t1, T2 t2);
     }
 
+    interface Function2<T1, T2, T3, R> {
+        R apply(T1 t1, T2 t2);
+    }
+
+    interface Function3<T1, T2, T3, T4, R> {
+        R apply(T1 t1, T2 t2, T3 t3, T4 t4);
+    }
+
     interface Consumer<T1, T2> {
         void accept(T1 t1, T2 t2);
+    }
+
+    interface Consumer2<T1, T2, T3> {
+        void accept(T1 t1, T2 t2, T3 t3);
+    }
+
+    interface Consumer3<T1, T2, T3, T4> {
+        void accept(T1 t1, T2 t2, T3 t3, T4 t4);
     }
 
     static <T> void forEachIndexed(Stream<T> stream, Consumer<T, Long> consumer) {
