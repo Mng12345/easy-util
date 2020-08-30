@@ -18,8 +18,9 @@ public interface FileUtil {
             String line;
             StringBuilder stringBuilder = new StringBuilder();
             while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
+                stringBuilder.append(line).append("\n");
             }
+            stringBuilder.deleteCharAt(stringBuilder.length()-1);
             return stringBuilder.toString();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
