@@ -21,7 +21,4 @@ public interface Strings {
         return arrayFormat(pattern, args).getMessage();
     }
 
-    static void b() {
-        List<Object> l = new ArrayList<>();
-    }
 }
