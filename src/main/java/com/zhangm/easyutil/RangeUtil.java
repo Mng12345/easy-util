@@ -419,4 +419,28 @@ public interface RangeUtil {
     static List<Double> toBoxedList(double[] array) {
         return Arrays.stream(array).boxed().collect(Collectors.toList());
     }
+
+    static double[] add(double[] data1, double[] data2) {
+        if (data1.length != data2.length) {
+            throw new RuntimeException(Strings.f("data1.length: {} != data2.length: {}",
+                    data1.length, data2.length));
+        }
+        double[] res = new double[data1.length];
+        for (int i=0; i<data1.length; i++) {
+            res[i] = data1[i] + data2[i];
+        }
+        return res;
+    }
+
+    static double[] sub(double[] data1, double[] data2) {
+        if (data1.length != data2.length) {
+            throw new RuntimeException(Strings.f("data1.length: {} != data2.length: {}",
+                    data1.length, data2.length));
+        }
+        double[] res = new double[data1.length];
+        for (int i=0; i<data1.length; i++) {
+            res[i] = data1[i] - data2[i];
+        }
+        return res;
+    }
 }

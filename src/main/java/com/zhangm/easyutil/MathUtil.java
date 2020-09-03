@@ -45,4 +45,66 @@ public interface MathUtil {
         return Math.round(v * Math.pow(10, num)) / multiple;
     }
 
+    /**
+     * 计算ma值
+     * @param data
+     * @param day
+     * @return
+     */
+    static double[] maLine(double[] data, int day) {
+        if (day > data.length) {
+            throw new RuntimeException(Strings.f("day: {} > data.length: {}", day, data.length));
+        }
+        double[] ma = new double[data.length - day + 1];
+        double sumVal = sum(RangeUtil.sliceNBefore(data, day-1, day));;
+        int index = 0;
+        ma[index] = sumVal / day;
+        for (int i=day; i<data.length; i++) {
+            sumVal += data[i] - data[i - day];
+            ma[index++] = sumVal / day;
+        }
+        return ma;
+    }
+
+    /**
+     * 计算ema
+     * @param data
+     * @param n
+     * @return
+     */
+    static double[] emaLine(double[] data, int n) {
+        double[] ema = new double[data.length];
+        ema[0] = data[0];
+        double k = 2 / (1.0 + n);
+        for (int i=1; i<data.length; i++) {
+            ema[i] = data[i] * k + ema[i-1] * (1-k);
+        }
+        return ema;
+    }
+
+    /**
+     * 计算两条ema的差值
+     * @param data
+     * @param shortN
+     * @param longN
+     * @return
+     */
+    static double[] emaGapLine(double[] data, int shortN, int longN) {
+        double[] shortEmaLine = emaLine(data, shortN);
+        double[] longEmaLine = emaLine(data, longN);
+        return RangeUtil.sub(shortEmaLine, longEmaLine);
+    }
+
+    /**
+     * 计算macd值
+     * @param data
+     * @param shortN
+     * @param longN
+     * @param n
+     * @return
+     */
+    static double[] macdLine(double[] data, int shortN, int longN, int n) {
+        double[] emaGap = emaGapLine(data, shortN, longN);
+        return emaLine(emaGap, n);
+    }
 }
