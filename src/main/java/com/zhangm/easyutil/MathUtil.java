@@ -107,4 +107,20 @@ public interface MathUtil {
         double[] emaGap = emaGapLine(data, shortN, longN);
         return emaLine(emaGap, n);
     }
+
+    /**
+     * 计算斜率
+     * @param data
+     * @param n
+     * @return
+     */
+    static double[] gradientLine(double[] data, int n) {
+        double[] res = new double[data.length - n + 1];
+        int index = -1;
+        for (int i=n-1; i<data.length; i++) {
+            int start = i - n + 1;
+            res[++index] = (data[i] - data[start]) * 1.0 / n;
+        }
+        return res;
+    }
 }
