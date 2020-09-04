@@ -61,7 +61,7 @@ public interface MathUtil {
         ma[index] = sumVal / day;
         for (int i=day; i<data.length; i++) {
             sumVal += data[i] - data[i - day];
-            ma[index++] = sumVal / day;
+            ma[++index] = sumVal / day;
         }
         return ma;
     }
