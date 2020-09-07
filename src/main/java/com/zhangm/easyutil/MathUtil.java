@@ -1,5 +1,7 @@
 package com.zhangm.easyutil;
 
+import java.util.Arrays;
+
 /**
  * @Author zhangming
  * @Date 2020/7/27 15:36
@@ -123,4 +125,26 @@ public interface MathUtil {
         }
         return res;
     }
+
+    /**
+     * 归一化
+     * @param data
+     * @param low
+     * @param high
+     * @return
+     */
+    static double[] normalize(double[] data, double low, double high) {
+        double minVal = Arrays.stream(data).min().orElseThrow();
+        double maxVal = Arrays.stream(data).max().orElseThrow();
+        if (maxVal - minVal == 0) {
+            return Arrays.stream(data).toArray();
+        }
+        double[] res = new double[data.length];
+        for (int i=0; i<data.length; i++) {
+            double normalVal = (data[i] - minVal) / (maxVal - minVal);
+            res[i] = low + (high - low) * normalVal;
+        }
+        return res;
+    }
+
 }
