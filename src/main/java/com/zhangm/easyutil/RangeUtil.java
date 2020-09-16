@@ -82,6 +82,19 @@ public interface RangeUtil {
         return out;
     }
 
+    static double[] merge(double[] d1, double[] d2) {
+        double[] data = new double[d1.length + d2.length];
+        int index = -1;
+        int i;
+        for (i=0; i<d1.length; i++) {
+            data[++index] = d1[i];
+        }
+        for (i=0; i<d2.length; i++) {
+            data[++index] = d2[i];
+        }
+        return data;
+    }
+
     static double[] unwrap(Double[] v) {
         double[] res = new double[v.length];
         for (int i=0; i<v.length; i++) {

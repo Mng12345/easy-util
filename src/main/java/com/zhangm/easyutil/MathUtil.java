@@ -1,5 +1,9 @@
 package com.zhangm.easyutil;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Arrays;
 
 /**
@@ -145,6 +149,46 @@ public interface MathUtil {
             res[i] = low + (high - low) * normalVal;
         }
         return res;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    static class Array {
+        private int length;
+        private double[] data;
+
+        /**
+         *
+         * @param start 0, 1, 2...
+         * @param end 987, 988, 999, -1, -2, -3...
+         * @return
+         */
+        public Array slice(int start, int end) {
+            if (end < 0) {
+                end = length - end;
+            }
+            double[] newData = RangeUtil.sliceNAfter(data, start, end - start + 1);
+            return new Array(end - start + 1, newData);
+        }
+
+        /**
+         * [start, end)
+         * @param start
+         * @param end
+         * @param array
+         */
+        public void set(int start, int end, Array array) {
+            int index = -1;
+            for (int i=start; i<end; i++) {
+                data[i] = array.getData()[++index];
+            }
+        }
+
+        public void set(int start, int end, double[] data) {
+            set(start, end, new Array(data.length, data));
+        }
+
     }
 
 }
